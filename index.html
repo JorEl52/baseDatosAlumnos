@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escuela</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="fondoBaseDatos.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Preparatoria  TecMilenio</h1>
+        <nav id="navbar-escuela">
+            <ul>
+               <li><a href="#" class="btn">Inicio</a></li>
+               <li><a href="#" class="btn">Maestros</a></li>
+               <li><a href="#" class="btn">Alumnos</a></li>
+               <li><a href="#" class="btn">Grupos</a></li>
+               <li><a href="#" class="btn">Acerca de</a></li> 
+            </ul>   
+        </nav>
+        <!--------------Registro de alumnos------------>
+        <h2>Registrar Alumno</h2>
+        <section class="formularioRegistro">
+            <form id="addStudentForm">
+                <label for="name">Nombre:</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="lastName">Apellidos:</label>
+                <input type="text" id="lastName" name="lastName" required>
+                
+                <label for="edad">Edad:</label>
+                <input type="text" id="edad" name="edad" required>
+                
+            </form>
+            <button type="submit">Registrar</button>
+        </section>
+        <!----------------Búsqueda de alumnos-------------->
+        <h2>Buscar Alumno</h2>
+        <section class="formularioBusqueda">
+            <form id="searchStudentForm">
+                <label for="searchName">Nombre:</label>
+                <input type="text" id="searchName" name="searchName">
+                
+                <label for="searchLastName">Apellidos:</label>
+                <input type="text" id="searchLastName" name="searchLastName">
+                
+            </form>
+            <button type="submit">Buscar</button>
+        </section>
+        <!--<h2>Promedio del Alumno</h2>
+        <p id="studentAverage"></p>
+        <h2>Promedio Grupal</h2>
+        <p id="groupAverage"></p> -->
+    </div>
+    <!---------------Fondo------------------->
+<div class="bg"></div>
+<div class="bg bg2"></div>
+<div class="bg bg3"></div>
+
+</body>
+</html>
