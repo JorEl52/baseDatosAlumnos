@@ -7,10 +7,9 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: center;
+    /*align-items: center;*/
     height: 100%;
     /*background: linear-gradient(to right, #1c7699e0, #93c9d1);*/
-    background: #3399ff;
     
 }
 
@@ -35,7 +34,7 @@ h2 {
 
 nav {
     width: 100%;
-    background-color: #f2f2f2;
+    background-color: #e9e6e6;
     padding: 10px 10px 10px 10px;
 }
 
@@ -86,6 +85,25 @@ input {
     border-radius: 4px;
     padding: 8px;
     font-size: 15px;
+    margin-bottom: 10px;
+    width: 10vw;
+}
+
+#edad {
+    color: #0b0b0b;
+    border: 1px solid #101010;
+    border-radius: 4px;
+    padding: 5px;
+    font-size: 15px;
+    margin-bottom: 10px;
+    width: 5vw;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding-top: 20px;
 }
 
 button {
@@ -95,9 +113,8 @@ button {
     cursor: pointer;
     font-size: 17px;
     padding: 10px 20px;
-    margin: 15px auto;
-    
-    
+    /*margin: 15px auto;*/
+    align-self: flex-start; 
 }
 
 button:hover {

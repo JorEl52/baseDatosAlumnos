@@ -22,41 +22,58 @@
         <!--------------Registro de alumnos------------>
         <h2>Registrar Alumno</h2>
         <section class="formularioRegistro">
-            <form id="addStudentForm">
+            <form id="formularioRegistro">
                 <label for="name">Nombre:</label>
-                <input type="text" id="name" name="name" required>
+                <input type="text" id="name" name="name">
                 
-                <label for="lastName">Apellidos:</label>
-                <input type="text" id="lastName" name="lastName" required>
+                <label for="apellidoPaterno">Apellido paterno:</label>
+                <input type="text" id="apellidoPaterno" name="apellidoPaterno" required>
+
+                <label for="apellidoMaterno">Apellido materno:</label>
+                <input type="text" id="apellidoMaterno" name="apellidoMaterno" required>
                 
                 <label for="edad">Edad:</label>
                 <input type="text" id="edad" name="edad" required>
+
+                <div class="button-container">
+                    <button type="submit">Registrar</button>
+                </div>
+                
                 
             </form>
-            <button type="submit">Registrar</button>
+            
         </section>
         <!----------------Búsqueda de alumnos-------------->
         <h2>Buscar Alumno</h2>
         <section class="formularioBusqueda">
-            <form id="searchStudentForm">
+            <form id="formularioBusqueda">
                 <label for="searchName">Nombre:</label>
                 <input type="text" id="searchName" name="searchName">
                 
-                <label for="searchLastName">Apellidos:</label>
-                <input type="text" id="searchLastName" name="searchLastName">
+                <label for="searchLastNamePaterno">Apellido paterno:</label>
+                <input type="text" id="searchLastNamePaterno" name="searchLastNamePaterno">
                 
+                <label for="searchLastNameMaterno">Apellido materno:</label>
+                <input type="text" id="searchLastNameMaterno" name="searchLastNameMaterno" required>
+
+                <div class="button-container">
+                    <button type="submit">Buscar</button>
+                </div>
             </form>
-            <button type="submit">Buscar</button>
+            
         </section>
         <!--<h2>Promedio del Alumno</h2>
         <p id="studentAverage"></p>
-        <h2>Promedio Grupal</h2>
-        <p id="groupAverage"></p> -->
+        <h2>Promedio Grupal</h2> -->
+
+        <ul id="listaAlumnos"></ul>
     </div>
     <!---------------Fondo------------------->
 <div class="bg"></div>
 <div class="bg bg2"></div>
 <div class="bg bg3"></div>
+
+<script src="main.js"></script>
 
 </body>
 </html>
