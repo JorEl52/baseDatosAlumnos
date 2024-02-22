@@ -66,12 +66,12 @@ document.addEventListener( 'DOMContentLoaded', function () {
     // Cargar el alumno desde localStorage
     var alumno = Alumno.cargarAlumno();
 
-    // Si se cargó un alumno, mostrar sus datos
+   /* // Si se cargó un alumno, mostrar sus datos
     if (alumno) {
         document.getElementById("name").value = alumno.nombre;
         document.getElementById("apellidoPaterno").value = alumno.primerApellido;
         document.getElementById("apellidoMaterno").value = alumno.segundoApellido;
         document.getElementById("edad").value = alumno.edad;
         //document.getElementById("fullName").textContent = alumno.mostrarNombre();
-    }
+    } */
 })
