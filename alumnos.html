@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preparatoria TecMilenio</title>
+    <link rel="stylesheet" href="fondoBaseDatos.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Preparatoria  TecMilenio</h1>
+        <nav id="navbar-escuela">
+            <ul>
+               <li><a href="#" class="btn">Inicio</a></li>
+               <li><a href="#" class="btn">Maestros</a></li>
+               <li><a href="#" class="btn">Alumnos</a></li>
+               <li><a href="#" class="btn">Grupos</a></li>
+               <li><a href="#" class="btn">Acerca de</a></li> 
+            </ul>   
+        </nav>
+        <!--------------Registro de alumnos------------>
+        <h2>Registrar Alumno</h2>
+        <section class="formularioRegistro">
+            <form id="formularioRegistro">
+                <label for="name">Nombre:</label>
+                <input type="text" id="name" name="name">
+                
+                <label for="apellidoPaterno">Apellido paterno:</label>
+                <input type="text" id="apellidoPaterno" name="apellidoPaterno" required>
+
+                <label for="apellidoMaterno">Apellido materno:</label>
+                <input type="text" id="apellidoMaterno" name="apellidoMaterno" required>
+                
+                <label for="edad">Edad:</label>
+                <input type="text" id="edad" name="edad" required>
+
+                <div class="button-container">
+                    <button type="submit">Registrar</button>
+                </div>
+                
+                
+            </form>
+            
+        </section>
+        <!----------------Búsqueda de alumnos-------------->
+        <h2>Buscar Alumno</h2>
+        <section class="formularioBusqueda">
+            <form id="formularioBusqueda">
+                <label for="searchName">Nombre:</label>
+                <input type="text" id="searchName" name="searchName">
+                
+                <label for="searchLastNamePaterno">Apellido paterno:</label>
+                <input type="text" id="searchLastNamePaterno" name="searchLastNamePaterno">
+                
+                <label for="searchLastNameMaterno">Apellido materno:</label>
+                <input type="text" id="searchLastNameMaterno" name="searchLastNameMaterno" required>
+
+                <div class="button-container">
+                    <button type="submit">Buscar</button>
+                </div>
+            </form>
+            
+        </section>
+        <!--<h2>Promedio del Alumno</h2>
+        <p id="studentAverage"></p>
+        <h2>Promedio Grupal</h2> -->
+
+        <ul id="listaAlumnos"></ul>
+    </div>
+    
+<div class="bg"></div>
+<div class="bg bg2"></div>
+<div class="bg bg3"></div>
+    
+</body>
+</html>
