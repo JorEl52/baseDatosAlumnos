@@ -77,7 +77,7 @@ const Alumnos = document.getElementById('pestanaAlumnos')
 
 Alumnos?.addEventListener('click', function(event){
     event.preventDefault()
-
+    
     //Al dar click en la pestaña Alumnos va a dirigir a a otra pagina
     window.location.href="alumnos.html"
 })
