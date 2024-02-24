@@ -5,69 +5,75 @@ class Alumno {
         this.primerApellido = primerApellido;
         this.segundoApellido = segundoApellido;
         this.edad = edad;
-        this.id = Alumno.contador++;
     }
 
     ////------Métodos---------------///
     //Funcion para guardar alumno
     static guardarAlumno(alumno) {
-        localStorage.setItem("alumno", JSON.stringify(alumno));
+        for(index=1;index<=localStorage.length;index++){
+            if(!localStorage.getItem("alumno" + index)){
+                break;
+            }
+        }
+        localStorage.setItem("alumno" + index, JSON.stringify(alumno));
     }
 
     //Función para cargar el alumnos del localStorage
-    static  cargarAlumno() {
-        var alumno = localStorage.getItem("alumno");
-        if(alumno) {
-            return JSON.parse(alumno);
-        }else{
-            return null;
+    static  cargarAlumnos() {
+        var alumnos = [];
+        for(var i=1;i<=localStorage.length;i++){
+            var alumno = localStorage.getItem("alumno" + i);
+            if(alumno) {
+                alumnos.push(JSON.parse(alumno));
+            }
         }
+        return alumnos;
     }
  
 
     //Mostrar el nombre
     mostrarNombre(){
-        return  this.id + '.- ' + this.primerApellido + " " + this.segundoApellido + " " + this.nombre;
+        return `${this.primerApellido} ${this.segundoApellido} ${this.nombre}`;
     }
-
-    static contador = 1;
-
 }
 
 
-document.addEventListener( 'DOMContentLoaded', function () {
-    const registro =  document.getElementById("formularioRegistro")
-    // Agregar un event listener al formulario de registro
-    registro?.addEventListener("submit", function(event) {
-        event.preventDefault();
 
-        // Obtener los valores del formulario
-        var nombre = document.getElementById("name").value;
-        var primerApellido = document.getElementById("apellidoPaterno").value;
-        var segundoApellido = document.getElementById("apellidoMaterno").value;
-        var edad = document.getElementById("edad").value;
+const registro =  document.getElementById("registrar")
+const listaAlumnos = document.getElementById("listaAlumnos");
 
-        // Crear un nuevo objeto Alumno
-        const alumno = new Alumno(nombre, primerApellido, segundoApellido, edad);
+// Agregar un event listener al formulario de registro
+registro?.addEventListener("submit", function(event) {
+    event.preventDefault();
 
-        // Guardar el alumno en localStorage
-        Alumno.guardarAlumno(alumno);
+    // Obtener los valores del formulario
+    var nombre = document.getElementById("name").value;
+    var primerApellido = document.getElementById("apellidoPaterno").value;
+    var segundoApellido = document.getElementById("apellidoMaterno").value;
+    var edad = document.getElementById("edad").value;
+    //Crear un objeto nuevo alumno
+    const alumno = new Alumno(nombre,primerApellido,segundoApellido,edad);
+    // Guardar el alumno en localStorage
+    Alumno.guardarAlumno(alumno,index);
 
-
-        // Agregar el nombre del alumno a la lista y mostrar
-        var lista = document.getElementById("listaAlumnos");
-        var nuevoAlumno = document.createElement("li");
-        nuevoAlumno.textContent = alumno.mostrarNombre();
-        lista.appendChild(nuevoAlumno);
-
-        //Mensaje de confirmacion
-        alert( `Se ha registrado correctamente como ${nombre}` );
-
-        //Limpiar los campos del formulario
-        document.getElementById("formularioRegistro").reset();
-    });
     
-})
+    // Actualizar la lista de alumnos
+    const li = document.createElement("li");
+    li.textContent = alumno.mostrarNombre();
+    listaAlumnos.appendChild(li);
+});
+
+
+// Cargar los alumnos almacenados en el local storage al cargar la página
+window.addEventListener("load", function() {
+    const alumnos = Alumno.cargarAlumnos();
+    for(let i=0; i<alumnos.length; i++) {
+        const alumno = alumnos[i];
+        const li = document.createElement("li");
+        li.textContent = alumno.mostrarNombre();
+        listaAlumnos.appendChild(li);
+    }
+}); 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -77,27 +83,9 @@ const Alumnos = document.getElementById('pestanaAlumnos')
 
 Alumnos?.addEventListener('click', function(event){
     event.preventDefault()
-    
-    //Al dar click en la pestaña Alumnos va a dirigir a a otra pagina
+
+    // Al dar click en la pestaña Alumnos, obtener los alumnos almacenados en el local storage y enviarlos a la página de alumnos
+    const alumnos = Alumno.cargarAlumnos();
+    localStorage.setItem("alumnos", JSON.stringify(alumnos));
     window.location.href="alumnos.html"
-})
-
-//=============================Pestaña Grupos=======================/////
-const Grupos = document.getElementById('pestanaGrupos')
-
-Grupos?.addEventListener('click',function(event){
-    event.preventDefault()
-    //Al dar click en la pestaña grupos te dirige a otra página
-    window.location.href = "grupos.html"
-})
-
-//==========================Volver a Inicio==============================///
-const inicio = document.getElementById('pestanaInicio')
-
-inicio?.addEventListener('click',function(event){
-    event.preventDefault()
-
-    //Al dar click en la pestaña inicio se recarga la pagina si esta en la pestaña principal
-    //si no lo está, simplemente se hace una redirección a la misma página
-    window.location.href = "index.html";
 })

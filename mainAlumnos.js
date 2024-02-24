@@ -1,7 +1,5 @@
 
-
-function mostrarAlumnos() {
-    let alumnos = cargarAlumno();
+function mostrarAlumnos(alumnos) {
     let tablaAlumnos = document.getElementById('tablaAlumnos');
     let cuerpoTabla = tablaAlumnos.getElementsByTagName('tbody')[0];
 
@@ -17,46 +15,34 @@ function mostrarAlumnos() {
         let nombreCompleto = document.createElement('td');
         let edad = document.createElement('td');
 
-        nombreCompleto.textContent = `${alumno.apellidoPaterno} ${alumno.apellidoMaterno} ${alumno.nombre}`;
+        nombreCompleto.textContent = `${alumno.primerApellido} ${alumno.segundoApellido} ${alumno.nombre}`;
         edad.textContent = alumno.edad
 
         fila.appendChild(nombreCompleto);
         fila.appendChild(edad);
+        cuerpoTabla.appendChild(fila);
     });
    
 }
 
-document.addEventListener( 'DOMContentLoaded', () => { 
-    mostrarAlumnos();
-} );
-
-
-/*
-// Función para inscribir alumnos a una materia específica
-function inscribirAlumno(alumno, materia) {
-    alumno.materias.push(materia);
-    guardarAlumnos();
-}
-
-// Función para asignar calificaciones a un alumno
-function asignarCalificacion(alumno, materia, calificacion) {
-    let indiceMateria = alumno.materias.findIndex(m => m.nombre === materia);
-    if (indiceMateria !== -1) {
-        alumno.materias[indiceMateria].calificaciones.push(calificacion);
-        guardarAlumnos();
-    } else {
-        console.log('El alumno no está inscrito en la materia');
+function cargarAlumnosDesdeLocalStorage() {
+    const alumnos = JSON.parse(localStorage.getItem("alumnos"));
+    if (alumnos) {
+        mostrarAlumnos(alumnos);
     }
 }
 
-// Guardar la lista de alumnos en el LocalStorage
-function guardarAlumnos() {
-    let alumnos = obtenerAlumnos();
-    localStorage.setItem('alumnos', JSON.stringify(alumnos));
-}
+//=============================Pestaña Alumnos=======================/////
+const Alumnos = document.getElementById('pestanaAlumnos')
 
-*/ 
+Alumnos?.addEventListener('click', function(event){
+    event.preventDefault()
 
+    // Al dar click en la pestaña Alumnos, obtener los alumnos almacenados en el local storage y enviarlos a la página de alumnos
+    const alumnos = JSON.parse(localStorage.getItem("alumnos"));
+    mostrarAlumnos(alumnos);
+    window.location.href="alumnos.html"
+})
 
 //=============================Pestaña Grupos=======================/////
 const Grupos = document.getElementById('pestanaGrupos')
@@ -77,3 +63,7 @@ inicio?.addEventListener('click',function(event){
     //si no lo está, simplemente se hace una redirección a la misma página
     window.location.href = "index.html";
 })
+
+// Cargar los alumnos almacenados en el local storage al cargar la página
+window.addEventListener("load", cargarAlumnosDesdeLocalStorage);
+
