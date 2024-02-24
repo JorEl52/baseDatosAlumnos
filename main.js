@@ -5,8 +5,10 @@ class Alumno {
         this.primerApellido = primerApellido;
         this.segundoApellido = segundoApellido;
         this.edad = edad;
+        this.id = Alumno.contador++;
     }
 
+    ////------Métodos---------------///
     //Funcion para guardar alumno
     static guardarAlumno(alumno) {
         localStorage.setItem("alumno", JSON.stringify(alumno));
@@ -25,9 +27,13 @@ class Alumno {
 
     //Mostrar el nombre
     mostrarNombre(){
-        return this.nombre + " " + this.primerApellido + " " + this.segundoApellido;
+        return  this.id + '.- ' + this.primerApellido + " " + this.segundoApellido + " " + this.nombre;
     }
+
+    static contador = 1;
+
 }
+
 
 document.addEventListener( 'DOMContentLoaded', function () {
     const registro =  document.getElementById("formularioRegistro")
