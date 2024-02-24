@@ -19,30 +19,19 @@
                 <li><a href="#" class="btn" id="pestanaAcercaDe">Acerca de</a></li> 
              </ul>    
         </nav>
-        <!----------------Búsqueda de alumnos-------------->
-        <h2>Buscar Alumno</h2>
-        <section class="formularioBusqueda">
-            <form id="formularioBusqueda">
-                <label for="searchName">Nombre:</label>
-                <input type="text" id="searchName" name="searchName">
-                
-                <label for="searchLastNamePaterno">Apellido paterno:</label>
-                <input type="text" id="searchLastNamePaterno" name="searchLastNamePaterno">
-                
-                <label for="searchLastNameMaterno">Apellido materno:</label>
-                <input type="text" id="searchLastNameMaterno" name="searchLastNameMaterno" required>
-
-                <div class="button-container">
-                    <button type="submit">Buscar</button>
-                </div>
-            </form>
-            
-        </section>
-        <!--<h2>Promedio del Alumno</h2>
-        <p id="studentAverage"></p>
-        <h2>Promedio Grupal</h2> -->
-
     </div>
+
+    <!--Lista de alumnos-->
+    <h1>Listado de Alumnos</h1>
+    <table id="tablaAlumnos">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Edad</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
     
 <div class="bg"></div>
 <div class="bg bg2"></div>
@@ -50,5 +39,6 @@
    
 
 <script src="mainAlumnos.js"></script>
+<script src="main.js"></script>
 </body>
 </html>
