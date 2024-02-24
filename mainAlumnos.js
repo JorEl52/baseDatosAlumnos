@@ -1,7 +1,61 @@
 
 
+function mostrarAlumnos() {
+    let alumnos = cargarAlumno();
+    let tablaAlumnos = document.getElementById('tablaAlumnos');
+    let cuerpoTabla = tablaAlumnos.getElementsByTagName('tbody')[0];
+
+    //limpiamos el contenido de la tabla
+    while (cuerpoTabla.firstChild) {
+        cuerpoTabla.removeChild(cuerpoTabla.firstChild);
+    }
 
 
+    //Crear las filas y celdas para cada alumnos agregado
+    alumnos.forEach(alumno => {
+        let fila = document.createElement('tr');
+        let nombreCompleto = document.createElement('td');
+        let edad = document.createElement('td');
+
+        nombreCompleto.textContent = `${alumno.apellidoPaterno} ${alumno.apellidoMaterno} ${alumno.nombre}`;
+        edad.textContent = alumno.edad
+
+        fila.appendChild(nombreCompleto);
+        fila.appendChild(edad);
+    });
+   
+}
+
+document.addEventListener( 'DOMContentLoaded', () => { 
+    mostrarAlumnos();
+} );
+
+
+/*
+// Función para inscribir alumnos a una materia específica
+function inscribirAlumno(alumno, materia) {
+    alumno.materias.push(materia);
+    guardarAlumnos();
+}
+
+// Función para asignar calificaciones a un alumno
+function asignarCalificacion(alumno, materia, calificacion) {
+    let indiceMateria = alumno.materias.findIndex(m => m.nombre === materia);
+    if (indiceMateria !== -1) {
+        alumno.materias[indiceMateria].calificaciones.push(calificacion);
+        guardarAlumnos();
+    } else {
+        console.log('El alumno no está inscrito en la materia');
+    }
+}
+
+// Guardar la lista de alumnos en el LocalStorage
+function guardarAlumnos() {
+    let alumnos = obtenerAlumnos();
+    localStorage.setItem('alumnos', JSON.stringify(alumnos));
+}
+
+*/ 
 
 
 //=============================Pestaña Grupos=======================/////
