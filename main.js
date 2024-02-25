@@ -9,7 +9,7 @@ class Alumno {
     }
 
     ////------Métodos---------------///
-    //Funcion para guardar alumno
+    /*//Funcion para guardar alumno
     static guardarAlumno(alumno) {
         localStorage.setItem("alumno", JSON.stringify(alumno));
     }
@@ -22,8 +22,27 @@ class Alumno {
         }else{
             return null;
         }
-    }
+    } */
  
+    ///metodo test-borrar si es necesario
+    //Funcion para guardar alumno
+    static guardarAlumno(alumno,index) {
+        localStorage.setItem(`alumno${index}`, JSON.stringify(alumno));
+    }
+
+    //Función para cargar el alumnos del localStorage
+    static  cargarAlumnos() {
+        let alumnos = [];
+        for(var i=1;i<=localStorage.length;i++){
+            var alumnoData = localStorage.getItem("alumno" + i)
+            if(alumnoData){
+                var alumnoObject = JSON.parse(alumnoData)
+                var alumno = new Alumno(alumnoObject.nombre,alumnoObject.primerApellido,alumnoObject.segundoApellido,alumnoObject.edad)
+                alumnos.push(alumno)
+            }
+        }
+        return alumnos
+    }//hasta aqui llega el test
 
     //Mostrar el nombre
     mostrarNombre(){
@@ -33,6 +52,8 @@ class Alumno {
     static contador = 1;
 
 }
+
+
 
 
 document.addEventListener( 'DOMContentLoaded', function () {
@@ -49,6 +70,13 @@ document.addEventListener( 'DOMContentLoaded', function () {
 
         // Crear un nuevo objeto Alumno
         const alumno = new Alumno(nombre, primerApellido, segundoApellido, edad);
+
+        //test-guardar alumno en el localStorage, borrar si es necesario
+        for(index=1;index<=localStorage.length;index++){
+            if(!localStorage.getItem("alumno" + index)){
+                break;
+            }
+        }//hasta aqui llega el test
 
         // Guardar el alumno en localStorage
         Alumno.guardarAlumno(alumno);
@@ -69,33 +97,60 @@ document.addEventListener( 'DOMContentLoaded', function () {
     
 })
 
+//cargar alumnos test-borrar si es necesario
+// Cargar los alumnos almacenados en el local storage al cargar la página
+window.addEventListener("load", function() {
+    const alumnos = Alumno.cargarAlumnos();
+    for(let i=0; i<alumnos.length; i++) {
+        const alumno = alumnos[i];
+        const li = document.createElement("li");
+        li.textContent = alumno.mostrarNombre();
+        listaAlumnos.appendChild(li);
+    }
+});
+
+//funcion de prueba-borrar si es necesario
+//funcion que cargara los alumnos del local storage y los mostrara en la tabla de la pestaña alumnos
+function cargarAlumnosDesdeLocalStorage() {
+    const alumnos = JSON.parse(localStorage.getItem('alumnos'));
+    if(alumnos) {
+        mostrarAlumnos(alumnos);
+    }
+}
+
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////Eventos del navbar, para rediccionar a otras paginas/////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //===============================Pestaña Alumnos======================///
 const Alumnos = document.getElementById('pestanaAlumnos')
 
 Alumnos?.addEventListener('click', function(event){
-    event.preventDefault()
+    event.preventDefault();
     
+    //enviar datos test-borrar si es necesario
+    // Al dar click en la pestaña Alumnos, obtener los alumnos almacenados en el local storage y enviarlos a la página de alumnos
+    //const alumnos = Alumno.cargarAlumnos();
+    //localStorage.setItem("alumnos", JSON.stringify(alumnos));
+    cargarAlumnosDesdeLocalStorage();
     //Al dar click en la pestaña Alumnos va a dirigir a a otra pagina
-    window.location.href="alumnos.html"
+    window.location.href="alumnos.html";
 })
 
 //=============================Pestaña Grupos=======================/////
 const Grupos = document.getElementById('pestanaGrupos')
 
 Grupos?.addEventListener('click',function(event){
-    event.preventDefault()
+    event.preventDefault();
     //Al dar click en la pestaña grupos te dirige a otra página
-    window.location.href = "grupos.html"
+    window.location.href = "grupos.html";
 })
 
 //==========================Volver a Inicio==============================///
 const inicio = document.getElementById('pestanaInicio')
 
 inicio?.addEventListener('click',function(event){
-    event.preventDefault()
+    event.preventDefault();
 
     //Al dar click en la pestaña inicio se recarga la pagina si esta en la pestaña principal
     //si no lo está, simplemente se hace una redirección a la misma página
