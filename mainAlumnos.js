@@ -1,7 +1,6 @@
 
 
 function mostrarAlumnos() {
-    let alumnos = cargarAlumno();
     let tablaAlumnos = document.getElementById('tablaAlumnos');
     let cuerpoTabla = tablaAlumnos.getElementsByTagName('tbody')[0];
 
@@ -22,6 +21,7 @@ function mostrarAlumnos() {
 
         fila.appendChild(nombreCompleto);
         fila.appendChild(edad);
+        cuerpoTabla.appendChild(fila); //Prueba-borrar si es necesario
     });
    
 }
