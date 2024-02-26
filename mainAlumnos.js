@@ -1,8 +1,8 @@
 
 
 function mostrarAlumnos() {
-    let tablaAlumnos = document.getElementById('tablaAlumnos');
-    let cuerpoTabla = tablaAlumnos.getElementsByTagName('tbody')[0];
+    var tablaAlumnos = document.getElementById('tablaAlumnos')
+    var cuerpoTabla = tablaAlumnos.getElementsByTagName('tbody')[0]
 
     //limpiamos el contenido de la tabla
     while (cuerpoTabla.firstChild) {
@@ -11,18 +11,19 @@ function mostrarAlumnos() {
 
 
     //Crear las filas y celdas para cada alumnos agregado
-    alumnos.forEach(alumno => {
-        let fila = document.createElement('tr');
-        let nombreCompleto = document.createElement('td');
-        let edad = document.createElement('td');
+    for (var index = 1; index <= localStorage.length; index++) {
+        var alumno = JSON.parse(localStorage.getItem(`alumno${index}`))
+        var fila = document.createElement('tr')
+        var nombreCompleto = document.createElement('td');
+        var edad = document.createElement('td')
 
-        nombreCompleto.textContent = `${alumno.apellidoPaterno} ${alumno.apellidoMaterno} ${alumno.nombre}`;
+        nombreCompleto.textContent = `${alumno.primerApellido} ${alumno.segundoApellido} ${alumno.nombre}`;
         edad.textContent = alumno.edad
 
-        fila.appendChild(nombreCompleto);
-        fila.appendChild(edad);
-        cuerpoTabla.appendChild(fila); //Prueba-borrar si es necesario
-    });
+        fila.appendChild(nombreCompleto)
+        fila.appendChild(edad)
+        cuerpoTabla.appendChild(fila) //Prueba-borrar si es necesario
+    }
    
 }
 
@@ -57,7 +58,7 @@ function guardarAlumnos() {
 
 */ 
 
-
+/*
 //=============================Pestaña Grupos=======================/////
 const Grupos = document.getElementById('pestanaGrupos')
 
@@ -76,4 +77,4 @@ inicio?.addEventListener('click',function(event){
     //Al dar click en la pestaña inicio se recarga la pagina si esta en la pestaña principal
     //si no lo está, simplemente se hace una redirección a la misma página
     window.location.href = "index.html";
-})
+})*/
