@@ -2,7 +2,7 @@
 
 
 
-
+/*
 //===============================Pestaña Alumnos======================///
 const Alumnos = document.getElementById('pestanaAlumnos')
 
@@ -22,4 +22,4 @@ inicio?.addEventListener('click',function(event){
     //Al dar click en la pestaña inicio se recarga la pagina si esta en la pestaña principal
     //si no lo está, simplemente se hace una redirección a la misma página
     window.location.href = "index.html";
-})
+})*/
