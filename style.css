@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap');
 
+/*Estilos generales de las páginas*/
+
 body {
     font-family: 'Fira Sans', sans-serif;
     font-size: 16px;
@@ -71,14 +73,6 @@ nav a:hover {
 }
 
 
-.formularioBusqueda label,
-.formularioRegistro label {
-    padding: 10px;
-    margin-left: 20px;
-}
-
-
-
 input {
     color: #0b0b0b;
     border: 1px solid #101010;
@@ -121,6 +115,8 @@ button:hover {
     background-color: #3a3838;
 }
 
+
+/*-------------------------------------------------Estilos de la pestaña de alumnos--------------------------------------------------------*/
 table {
     border-collapse: collapse;
     width: 40%;
@@ -136,5 +132,54 @@ th, td {
 th {
     background-color: #f2f2f2;
 }
+
+.inscripcionMaterias {
+    margin-left: 10px;
+}
+#container {
+    display: flex;
+    justify-content: space-around;
+}
+#materias {
+    width: 180px;
+    height: 30px;
+    overflow: auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+#seleccionarMateria input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    width: 100px;
+}
+.inputName input,
+.inputLastName input,
+.inputLastNameMaterno input {
+    width: 100%;
+    height: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+#botonBuscar {
+    display: block;
+    width: 40%;
+ 
+}
+#formularioBusqueda label {
+    display: flex;
+    justify-content: center;
+}
+
+
+
+
 
 
