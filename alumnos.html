@@ -21,17 +21,56 @@
         </nav>
     </div>
 
-    <!--Lista de alumnos-->
-    <h1>Listado de Alumnos</h1>
-    <table id="tablaAlumnos">
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Edad</th>
-            </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
+    
+        <!--Lista de alumnos-->
+        <h1>Listado de alumnos inscritos</h1>
+        <div id="container">
+        <table id="tablaAlumnos">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Edad</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+
+        <div class="inscripcionMaterias">
+            <form id="formularioBusqueda">
+                <h2>Inscribir a materias</h2>
+                <div class="inputName">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombreBusq" name=""nombreBusq>
+
+                </div>
+                <div class="inputLastName">
+                    <label for="apellido">Apellido Paterno:</label>
+                    <input type="text" id="apellidoPaterno" name="apellidoPaterno">
+                </div>
+                <div class="inputLastNameMaterno">
+                    <label for="apellido">Apellido Materno:</label>
+                    <input type="text" id="apellidoMaterno" name=""apellidoMaterno>
+                </div>
+                <input type="submit" value="Buscar" id="botonBuscar"/><br/>
+            </form>
+
+            <form action="#" id="seleccionarMateria">
+                <label for="materias">Materia:</label>
+                <select name="materias" id="materias">
+                    <option value="selecionaUnaMateria">Selecciona  una opción...</option>
+                    <option value="programacion">Programación</option>
+                    <option value="biologiaAnimal">Biología Animal</option>
+                    <option value="agronomia">Agronomía</option>
+                    <option value="genetica">Genética</option>
+                    <option value="quimicaOrganica">Química Orgánica</option>
+                    <option value="robotica">Robótica</option>
+                    <option value="produccionAnimal">Producción Animal</option>
+                </select>
+                <input type="submit" value="Enviar">
+            </form>
+            
+        </div>
+    </div>
     
 <div class="bg"></div>
 <div class="bg bg2"></div>
