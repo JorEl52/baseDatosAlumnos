@@ -171,6 +171,7 @@ th {
 #botonBuscar {
     display: block;
     width: 40%;
+    margin-bottom: 10px;
  
 }
 #formularioBusqueda label {
