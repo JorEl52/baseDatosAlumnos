@@ -5,6 +5,7 @@ class Alumno {
         this.primerApellido = primerApellido;
         this.segundoApellido = segundoApellido;
         this.edad = edad;
+        this.materia = materia;
         this.id = Alumno.contador++;
     }
  
@@ -17,6 +18,17 @@ class Alumno {
             }
         }
         localStorage.setItem(`alumno${index}`, JSON.stringify(alumno));
+    }
+
+    //Funcion para guardar materia en el local storage
+    static guardarMateria(alumnoInscrito,index){
+        for(index=1;index<=localStorage.length;index++){
+            console.log(alumnoInscrito);
+            if(!localStorage.getItem("alumnoInscrito" + index)){
+                break;
+            }
+        }
+        localStorage.setItem(`alumnoInscrito ${index}`,JSON.stringify(alumnoInscrito));
     }
 
 
@@ -42,6 +54,7 @@ document.addEventListener( 'DOMContentLoaded', function () {
         var segundoApellido = document.getElementById("apellidoMaterno").value;
         var edad = document.getElementById("edad").value;
 
+       
         // Crear un nuevo objeto Alumno
         const alumno = new Alumno(nombre, primerApellido, segundoApellido, edad);
 
@@ -57,7 +70,8 @@ document.addEventListener( 'DOMContentLoaded', function () {
 
         //Mensaje de confirmacion
         alert( `Se ha registrado correctamente como ${nombre}` );
-
+        // Mostrar el formulario de asignación de materia para el alumno recién creado
+        mostrarFormularioAsignacionMateria(alumno);
         //Limpiar los campos del formulario
         document.getElementById("formularioRegistro").reset();
     });
