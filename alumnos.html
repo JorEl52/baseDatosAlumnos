@@ -24,10 +24,11 @@
     
         <!--Lista de alumnos-->
         <h1>Listado de alumnos inscritos</h1>
-        <div id="container">
+    <div id="container">
         <table id="tablaAlumnos">
             <thead>
                 <tr>
+                    <th>No.</th>
                     <th>Nombre</th>
                     <th>Edad</th>
                 </tr>
@@ -35,13 +36,13 @@
             <tbody></tbody>
         </table>
 
+        <!--Formulario del nombre del alumno a buscar para inscribirlo en una materia-->
         <div class="inscripcionMaterias">
             <form id="formularioBusqueda">
                 <h2>Inscribir a materias</h2>
                 <div class="inputName">
                     <label for="nombre">Nombre:</label>
                     <input type="text" id="nombreBusq" name=""nombreBusq>
-
                 </div>
                 <div class="inputLastName">
                     <label for="apellido">Apellido Paterno:</label>
@@ -49,11 +50,14 @@
                 </div>
                 <div class="inputLastNameMaterno">
                     <label for="apellido">Apellido Materno:</label>
-                    <input type="text" id="apellidoMaterno" name=""apellidoMaterno>
-                </div>
-                <input type="submit" value="Buscar" id="botonBuscar"/><br/>
+                    <input type="text" id="apellidoMaterno" name="apellidoMaterno">
+                </div> 
+                <button type="submit" value="Buscar" id="botonBuscar">Buscar</button>
             </form>
-
+            
+            
+            <!--Seleccionar materia-->
+            <!--
             <form action="#" id="seleccionarMateria">
                 <label for="materias">Materia:</label>
                 <select name="materias" id="materias">
@@ -68,7 +72,8 @@
                 </select>
                 <input type="submit" value="Enviar">
             </form>
-            
+            -->
+            <div id="formularioAsignacionMateria"></div>
         </div>
     </div>
     
