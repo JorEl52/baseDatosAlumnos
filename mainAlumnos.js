@@ -1,8 +1,9 @@
 
 // Función para mostrar los alumnos inscritos en una tabla
-function mostrarAlumnos() {
+/*function mostrarAlumnos() {
   // Quitar los valores null del arreglo alumnoInscrito
-  const alumnosFiltrados = alumnoInscrito.filter(alumno => alumno !== null);
+  const alumnosInscritosCopia = [...alumnoInscrito]
+  const alumnosFiltrados = alumnosInscritosCopia.filter(alumno => alumno !== null);
 
   // Iterar sobre los alumnos filtrados y mostrar cada uno en la tabla
   for (let i = 0; i < alumnosFiltrados.length; i++) {
@@ -10,16 +11,16 @@ function mostrarAlumnos() {
     const fila = document.createElement('tr');
     const nombreCompleto = `${alumno.nombre} ${alumno.primerApellido} ${alumno.segundoApellido}`;
     fila.innerHTML = `
-      <td>${alumno.id}</td>
+      
       <td>${nombreCompleto}</td>
       <td>${alumno.edad}</td>
     `;
     tablaAlumnos.appendChild(fila);
   }
-}
+}*/
 
 
-/*
+
 //--------------------------función que muestra los alumnos en la página de alumnos----------------------------------------------
 function mostrarAlumnos() {
     var tablaAlumnos = document.getElementById('tablaAlumnos')
@@ -28,6 +29,7 @@ function mostrarAlumnos() {
     //Crear las filas y celdas para cada alumno agregado
     for (var index = 1; index <= localStorage.length; index++) {
         var alumno = JSON.parse(localStorage.getItem(`alumno${index}`))
+      if (alumno !== null){
         var fila = document.createElement('tr')
         var lista = document.createElement('td')//creación del elemento para la lista
         var nombreCompleto = document.createElement('td')
@@ -43,8 +45,9 @@ function mostrarAlumnos() {
         fila.appendChild(nombreCompleto)
         fila.appendChild(edad)
         cuerpoTabla.appendChild(fila) 
+      }
     } 
-}*/
+}
 
 document.addEventListener( 'DOMContentLoaded', () => { 
     mostrarAlumnos();
@@ -161,14 +164,14 @@ function mostrarFormularioAsignacionMateria(alumno){
     //Agrego el formulario al cuerpo de la pagina
     document.body.appendChild(formularioAsignacionMateria);
     //Agrego event listener al boton de enviar
-    formularioAsignacionMateria.addEventListener('submit', function(event){
+    formularioAsignacionMateria?.addEventListener('submit', function(event){
       event.preventDefault();
       //Obtengo el valor de la materia seleccionada
       const materiaSeleccionada = document.getElementById('materias').value;
       //agrego la materia al objeto alumno
-      alumno.materia = materiaSeleccionada;
+      alumno.materias.push = materiaSeleccionada;
       //guardo el objeto Alumno en el localStorage
-      Alumno.guardarMateria(alumno, alumno.id);
+      //Alumno.guardarMateria(alumno, alumno.id);
       console.log(`El alumno ${alumno.nombre} ${alumno.primerApellido} ${alumno.segundoApellido} se inscribio a ${materiaSeleccionada}`);
       
       formularioAsignacionMateria.style.display = 'none';
