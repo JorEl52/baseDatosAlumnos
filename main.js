@@ -5,7 +5,7 @@ class Alumno {
         this.primerApellido = primerApellido;
         this.segundoApellido = segundoApellido;
         this.edad = edad;
-        this.materia = materia;
+        this.materias = [];
         this.id = Alumno.contador++;
     }
  
@@ -42,7 +42,7 @@ class Alumno {
 }
 
 //Funciones del formulario de inscripción
-document.addEventListener( 'DOMContentLoaded', function () {
+document?.addEventListener( 'DOMContentLoaded', function () {
     const registro =  document.getElementById("formularioRegistro")
     // Agregar un event listener al formulario de registro
     registro?.addEventListener("submit", function(event) {
@@ -70,8 +70,7 @@ document.addEventListener( 'DOMContentLoaded', function () {
 
         //Mensaje de confirmacion
         alert( `Se ha registrado correctamente como ${nombre}` );
-        // Mostrar el formulario de asignación de materia para el alumno recién creado
-        mostrarFormularioAsignacionMateria(alumno);
+        
         //Limpiar los campos del formulario
         document.getElementById("formularioRegistro").reset();
     });
