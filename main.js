@@ -5,7 +5,8 @@ class Alumno {
         this.primerApellido = primerApellido;
         this.segundoApellido = segundoApellido;
         this.edad = edad;
-        this.materias = [];
+        this.materias = new Array(4).fill(null);
+        this.materiaJSON = "";
         this.id = Alumno.contador++;
     }
  
