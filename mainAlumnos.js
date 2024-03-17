@@ -28,7 +28,7 @@ function mostrarAlumnos() {
     var indice = 1//variable para poner el numero de lista
     //Crear las filas y celdas para cada alumno agregado
     for (var index = 1; index <= localStorage.length; index++) {
-        var alumno = JSON.parse(localStorage.getItem(`alumno${index}`))
+      var alumno = JSON.parse(localStorage.getItem(`alumno${index}`))
       if (alumno !== null){
         var fila = document.createElement('tr')
         var lista = document.createElement('td')//creación del elemento para la lista
@@ -169,11 +169,41 @@ function mostrarFormularioAsignacionMateria(alumno){
       //Obtengo el valor de la materia seleccionada
       const materiaSeleccionada = document.getElementById('materias').value;
       //agrego la materia al objeto alumno
-      alumno.materias.push = materiaSeleccionada;
+      var alumnoTemp = localStorage.getItem('alumno' + alumno.id);
+      console.log(alumnoTemp);
+      //alumno.materias.push = materiaSeleccionada;
+      var materiasTest = [];
+      materiasTest[0] = "genetica";
+      materiasTest[1] = "biologia";
+      console.log(materiasTest);
+      alumnoTemp.materiaJSON = 'JSON.stringify(materiasTest)';
+      console.log(alumnoTemp);
+      localStorage.setItem('alumno'+alumno.id, alumnoTemp);
+      //console.log(alumno.materias);
       //guardo el objeto Alumno en el localStorage
       //Alumno.guardarMateria(alumno, alumno.id);
       console.log(`El alumno ${alumno.nombre} ${alumno.primerApellido} ${alumno.segundoApellido} se inscribio a ${materiaSeleccionada}`);
       
+
+      /*// TEST PARA INSCRIBIR A 4 MATERIAS
+      const materiaSeleccionada = event.target.materias.value;
+      if (materiaSeleccionada === 'seleccionaUnaMateria') {
+        alert('Selecciona una materia');
+        return;
+      }
+      //Buscar posicion disponible del array de materias
+      const posicionDisponible = alumno.materias.findIndex((materia) => materia === null);
+      if (posicionDisponible === -1) {
+        alert('No hay espacios disponibles para asignar materia');
+        return;
+      }
+      //Asignar la materia en la posicion disponible
+      alumno.materias[posicionDisponible] = materiaSeleccionada;
+      //Guardar el alumno
+      localStorage.setItem(`alumno${alumno.id}`, JSON.stringify(alumno));
+      console.log(`Materia ${materiaSeleccionada} se ha asignado con exito`);
+      //AQUI TERMINA TEST*/
+
       formularioAsignacionMateria.style.display = 'none';
     });
 
