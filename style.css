@@ -140,7 +140,7 @@ th {
     display: flex;
     justify-content: space-around;
 }
-#materias {
+#materiasName {
     width: 180px;
     height: 30px;
     overflow: auto;
@@ -150,8 +150,9 @@ th {
     margin-bottom: 10px;
 }
 
-#seleccionarMateria input {
+#formularioAsignacionMateria input {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     margin-top: 20px;
@@ -177,6 +178,18 @@ th {
 #formularioBusqueda label {
     display: flex;
     justify-content: center;
+}
+
+#materias {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+#mateiras label {
+    margin-bottom: 5px;
+}
+#materias input[type="checkbox"] {
+    margin-right: 10px;
 }
 
 

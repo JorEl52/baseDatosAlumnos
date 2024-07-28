@@ -148,8 +148,23 @@ function mostrarFormularioAsignacionMateria(alumno){
     formularioAsignacionMateria.id = 'formularioAsignacionMateria';
     
     formularioAsignacionMateria.innerHTML = `
-      <label for="materias">Materia:</label>
-      <select name="materias" id="materias">
+    <label for="materiasName">Materia:</label>
+    <div id="materias">
+      <label><input type="checkbox" value="DI" name="materias[]">Dibujo de Ingeniería</label><br>
+      <label><input type="checkbox" value="MS" name="materias[]">Modelación de Sistemas</label><br>
+      <label><input type="checkbox" value="IE" name="materias[]">Ingeniería Económica</label><br>
+      <label><input type="checkbox" value="MT" name="materias[]">Motores y Tractores</label><br>
+      <label><input type="checkbox" value="SE" name="materias[]">Sistemas Embebidos</label><br>
+      <label><input type="checkbox" value="VC" name="materias[]">Visión por Computadora</label><br>
+      <label><input type="checkbox" value="PI" name="materias[]">Proyecto Integrador</label><br>
+    </div>
+    <button type="submit" value="enviar">Enviar</button>
+    `
+    
+    
+    /*formularioAsignacionMateria.innerHTML = `
+      <label for="materiasName">Materia:</label>
+      <select name="materias" id="materias" multiple size="4">
           <option value="selecionaUnaMateria">Selecciona  una opción...</option>
           <option value="programacion">Programación</option>
           <option value="biologiaAnimal">Biología Animal</option>
@@ -159,52 +174,35 @@ function mostrarFormularioAsignacionMateria(alumno){
           <option value="robotica">Robótica</option>
           <option value="produccionAnimal">Producción Animal</option>
       </select>
-      <input type="submit" value="Enviar">
-    `;
+      <button type="submit" value="enviar">Enviar</button>
+    `;*/
     //Agrego el formulario al cuerpo de la pagina
     document.body.appendChild(formularioAsignacionMateria);
     //Agrego event listener al boton de enviar
     formularioAsignacionMateria?.addEventListener('submit', function(event){
       event.preventDefault();
-      //Obtengo el valor de la materia seleccionada
+      /*//Obtengo el valor de la materia seleccionada
       const materiaSeleccionada = document.getElementById('materias').value;
-      //agrego la materia al objeto alumno
-      var alumnoTemp = localStorage.getItem('alumno' + alumno.id);
-      console.log(alumnoTemp);
-      //alumno.materias.push = materiaSeleccionada;
-      var materiasTest = [];
-      materiasTest[0] = "genetica";
-      materiasTest[1] = "biologia";
-      console.log(materiasTest);
-      alumnoTemp.materiaJSON = 'JSON.stringify(materiasTest)';
-      console.log(alumnoTemp);
-      localStorage.setItem('alumno'+alumno.id, alumnoTemp);
-      //console.log(alumno.materias);
-      //guardo el objeto Alumno en el localStorage
-      //Alumno.guardarMateria(alumno, alumno.id);
+      //parseo los datos del alumno en una variable
+      var alumnoMateria = JSON.parse(localStorage.getItem('alumno' + alumno.id));
+      //agrego la materia seleccionada al array de materias del alumno
+      alumnoMateria.materias.push(materiaSeleccionada);
+      console.log("Alumno con materia");
+      console.log(alumnoMateria);
+      //guardo la materia en el local storage
+      localStorage.setItem('alumno' + alumno.id, JSON.stringify(alumnoMateria));
       console.log(`El alumno ${alumno.nombre} ${alumno.primerApellido} ${alumno.segundoApellido} se inscribio a ${materiaSeleccionada}`);
+      */
+
+      //TEST PARA GUARDAR VARIAS MATERIAS
+      const materiasSeleccionadas = Array.from(document.getElementsByName('materias[]')).filter(input => input.checked).map(input => input.value);
+      //const materiasSeleccionadas = Array.from(document.getElementById('materias').selectedOptions, option => option.value)
+      var alumnoMateria = JSON.parse(localStorage.getItem('alumno'+alumno.id))
+      alumnoMateria.materias = materiasSeleccionadas
+      localStorage.setItem('alumno' + alumno.id, JSON.stringify(alumnoMateria))
+      console.log(`El alumno ${alumno.nombre} ${alumno.primerApellido} ${alumno.segundoApellido} se inscribio a ${materiasSeleccionadas.join(', ')}`);
+      //AQUI TERMINA TESTE
       
-
-      /*// TEST PARA INSCRIBIR A 4 MATERIAS
-      const materiaSeleccionada = event.target.materias.value;
-      if (materiaSeleccionada === 'seleccionaUnaMateria') {
-        alert('Selecciona una materia');
-        return;
-      }
-      //Buscar posicion disponible del array de materias
-      const posicionDisponible = alumno.materias.findIndex((materia) => materia === null);
-      if (posicionDisponible === -1) {
-        alert('No hay espacios disponibles para asignar materia');
-        return;
-      }
-      //Asignar la materia en la posicion disponible
-      alumno.materias[posicionDisponible] = materiaSeleccionada;
-      //Guardar el alumno
-      localStorage.setItem(`alumno${alumno.id}`, JSON.stringify(alumno));
-      console.log(`Materia ${materiaSeleccionada} se ha asignado con exito`);
-      //AQUI TERMINA TEST*/
-
-      formularioAsignacionMateria.style.display = 'none';
     });
 
 }
@@ -235,7 +233,10 @@ busqueda?.addEventListener("submit", function(event){
     } else {
       const alumno = alumnoOrdenado[alumnoEncontrado];
       console.log(`El nombre ${alumno.nombre} ${alumno.primerApellido} ${alumno.segundoApellido} fue encontrado.`);
-      mostrarFormularioAsignacionMateria(alumno);  
+      mostrarFormularioAsignacionMateria(alumno); 
+      if(mostrarFormularioAsignacionMateria){
+
+      } 
       //console.log(`El nombre está en la posición `+ alumnoEncontrado);
     }
 

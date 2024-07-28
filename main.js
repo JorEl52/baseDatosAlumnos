@@ -5,8 +5,7 @@ class Alumno {
         this.primerApellido = primerApellido;
         this.segundoApellido = segundoApellido;
         this.edad = edad;
-        this.materias = new Array(4).fill(null);
-        this.materiaJSON = "";
+        this.materias = [];
         this.id = Alumno.contador++;
     }
  
@@ -20,18 +19,6 @@ class Alumno {
         }
         localStorage.setItem(`alumno${index}`, JSON.stringify(alumno));
     }
-
-    //Funcion para guardar materia en el local storage
-    static guardarMateria(alumnoInscrito,index){
-        for(index=1;index<=localStorage.length;index++){
-            console.log(alumnoInscrito);
-            if(!localStorage.getItem("alumnoInscrito" + index)){
-                break;
-            }
-        }
-        localStorage.setItem(`alumnoInscrito ${index}`,JSON.stringify(alumnoInscrito));
-    }
-
 
     //Mostrar el nombre
     mostrarNombre(){
